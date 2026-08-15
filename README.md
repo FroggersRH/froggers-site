@@ -27,7 +27,11 @@ Then open http://localhost:8000.
 
 ## Deploy
 
-The repository is ready for GitHub Pages: everything is served from the repo root and `.nojekyll` is included. In the repo settings, enable **Pages → Deploy from a branch → main / (root)**. Any other static host (Netlify, Cloudflare Pages, …) works the same way — just serve the folder as-is.
+**Vercel (recommended):** import the GitHub repository in the Vercel dashboard (Add New… → Project). Framework preset: **Other** — no build command, no output directory, everything is served from the repo root. `vercel.json` is included (security headers, immutable caching for `assets/`). Every push to `main` redeploys automatically.
+
+**GitHub Pages:** also works as-is — `.nojekyll` is included. In the repo settings, enable **Pages → Deploy from a branch → main / (root)**.
+
+Any other static host (Netlify, Cloudflare Pages, …) works the same way — just serve the folder as-is.
 
 ## Links
 
