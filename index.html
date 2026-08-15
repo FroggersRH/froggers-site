@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Froggers ($FROG) — 5000 frogs, 100% on-chain</title>
+<meta name="description" content="5000 pixel-art frogs living entirely on-chain as an ERC-20 synced to ownership via a Uniswap v4 hook, on Robinhood Chain. No IPFS, no metadata API, no team allocation. Fully anonymous, fully on-chain.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#060d06">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Froggers ($FROG) — 5000 frogs, 100% on-chain">
+<meta property="og:description" content="1 $FROG = 1 frog. Buy from the pool, your frogs mint with fresh random traits. Sell, they burn and reroll forever. 25 legendary frogs. Fair launch, zero team allocation, ownership renounced.">
+<meta property="og:image" content="assets/branding/banner.png">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="500">
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Froggers ($FROG) — 5000 frogs, 100% on-chain">
+<meta name="twitter:description" content="5000 pixel-art frogs living entirely on-chain. No IPFS, no metadata API, no team allocation. Fully anonymous, fully on-chain.">
+<meta name="twitter:image" content="assets/branding/banner.png">
+
+<!-- Self-hosted inline pixel favicon — no external request -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23060d06'/%3E%3Crect x='3' y='2' width='3' height='3' fill='%23a8e62e'/%3E%3Crect x='10' y='2' width='3' height='3' fill='%23a8e62e'/%3E%3Crect x='2' y='5' width='12' height='8' fill='%23a8e62e'/%3E%3Crect x='4' y='8' width='2' height='2' fill='%23060d06'/%3E%3Crect x='10' y='8' width='2' height='2' fill='%23060d06'/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top">
+      <span class="dot" aria-hidden="true"></span>
+      FROGGERS <span style="color: var(--muted); font-weight: 400;">$FROG</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#legendaries">Legendaries</a></li>
+      <li><a href="#fair-launch">Fair Launch</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" style="position: relative; overflow: hidden;">
+    <span class="sparkle" aria-hidden="true" style="top: 12%; left: 8%; font-size: 1.1rem;">+</span>
+    <span class="sparkle" aria-hidden="true" style="top: 22%; left: 88%; font-size: 0.9rem;">+</span>
+    <span class="sparkle" aria-hidden="true" style="top: 68%; left: 5%; font-size: 0.8rem;">+</span>
+    <span class="sparkle" aria-hidden="true" style="top: 75%; left: 92%; font-size: 1rem;">+</span>
+    <span class="sparkle" aria-hidden="true" style="top: 40%; left: 3%; font-size: 0.7rem;">+</span>
+    <span class="sparkle" aria-hidden="true" style="top: 50%; left: 95%; font-size: 0.7rem;">+</span>
+
+    <div class="container">
+      <span class="eyebrow">5000 pixel-art frogs</span>
+      <h1 class="wordmark">
+        <img class="pixel wordmark-img" src="assets/branding/wordmark.png" alt="FROGGERS" width="788" height="148">
+        <span class="ticker">$FROG</span>
+      </h1>
+      <p class="tagline">5000 frogs. 100% on-chain. Zero promises.</p>
+      <p class="subtagline">No IPFS. No metadata API. No team wallet. Just a Uniswap v4 hook, a pool, and 5000 frogs that live entirely inside the contract.</p>
+
+      <div class="btn-row">
+        <a class="btn btn-solid" href="#" title="TODO: point to the live pool at launch">Buy from the Pool</a>
+        <a class="btn" href="#" title="TODO: point to the verified contract at launch">Read the Contract</a>
+      </div>
+    </div>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-track">
+        <img class="pixel" src="assets/samples/frog_00.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_02.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_04.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_06.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_08.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_10.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_12.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_14.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_16.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_18.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_20.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_22.png" alt="" loading="lazy" width="84" height="84">
+        <!-- duplicated for a seamless CSS loop -->
+        <img class="pixel" src="assets/samples/frog_00.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_02.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_04.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_06.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_08.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_10.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_12.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_14.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_16.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_18.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_20.png" alt="" loading="lazy" width="84" height="84">
+        <img class="pixel" src="assets/samples/frog_22.png" alt="" loading="lazy" width="84" height="84">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">The Mechanics</span>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">$FROG is an ERC-20 token wired one-to-one to frog ownership through a Uniswap v4 hook. No off-chain server ever touches your frogs.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step-card">
+          <span class="step-num">01</span>
+          <h3>Buy → Mint</h3>
+          <p>Buy $FROG from the pool and frogs mint straight to your wallet with fresh, randomly rolled traits. No claim step, no allowlist.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">02</span>
+          <h3>Hold → Own</h3>
+          <p>Your frogs sit in your wallet as long as you hold the underlying $FROG balance. Full on-chain SVG, viewable with a free <code>eth_call</code>.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">03</span>
+          <h3>Sell → Burn</h3>
+          <p>Sell back into the pool and the corresponding frogs burn. Their traits are gone — buy back in later and you reroll from scratch.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">04</span>
+          <h3>Transfer → Move</h3>
+          <p>Wallet-to-wallet transfers move the actual frogs, traits intact. No mint, no burn — just the frogs changing hands.</p>
+        </article>
+      </div>
+
+      <p class="tech-note">Art and metadata are generated entirely by the contracts — <strong>no server, no IPFS images, no metadata API.</strong> Every frog you see is rendered live, on-chain, powered by a Uniswap v4 hook on <span class="chain-name">Robinhood Chain</span>.</p>
+
+      <div class="roll-demo">
+        <div class="roll-tile" aria-hidden="true">
+          <img class="pixel roll-layer" data-roll-layer="background" src="assets/traits/fond_06_nuit.png" alt="">
+          <img class="pixel roll-layer" data-roll-layer="body" src="assets/traits/corps_20_neon_vert.png" alt="">
+          <img class="pixel roll-layer" data-roll-layer="mouth" src="assets/traits/bouche_08_grillz_or.png" alt="">
+          <img class="pixel roll-layer" data-roll-layer="eyes" src="assets/traits/yeux_16_laser_rouge.png" alt="">
+          <img class="pixel roll-layer" data-roll-layer="accessory" src="assets/traits/acc_00_chaine_en_or.png" alt="">
+          <img class="pixel roll-layer" data-roll-layer="headwear" src="assets/traits/chef_08_couronne_penchee.png" alt="">
+        </div>
+        <div class="roll-copy">
+          <h3>Roll a Preview</h3>
+          <p>This button does not touch a wallet, a node, or a contract — it just re-stacks six local preview layers (background, body, mouth, eyes, accessory, headwear) so you can feel what "fresh random traits on every mint" means.</p>
+          <button class="btn" type="button" data-roll-button>Reroll (simulate a buy)</button>
+          <p class="fine-print">Simulated preview only. Real traits are generated on-chain, at mint time, by the contracts.</p>
+          <p class="fine-print">6 categories &times; 40 traits each = 240 traits total &mdash; billions of possible combinations across 5000 frogs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEGENDARY LOTTERY ============ -->
+  <section id="legendaries">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">One in Two Hundred</span>
+        <h2 class="section-title">The Legendary Lottery</h2>
+        <p class="section-desc">Every mint gets a shot at one of 25 one-of-a-kind legendary frogs. Only one of each can exist at a time.</p>
+      </div>
+
+      <div class="odds-strip">
+        <div class="odds-item"><span class="num">0.5%</span><span class="label">Odds per mint</span></div>
+        <div class="odds-item"><span class="num">25</span><span class="label">Unique designs</span></div>
+        <div class="odds-item"><span class="num">1</span><span class="label">Max alive, each</span></div>
+        <div class="odds-item"><span class="num">&infin;</span><span class="label">Times reroll-able</span></div>
+      </div>
+
+      <div class="legendary-grid">
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/01-le-dore.png" alt="Legendary Froggers frog: The Golden One" loading="lazy" width="384" height="384"><figcaption>The Golden One<span class="ledger-id">No. 01 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/02-diamond-hands.png" alt="Legendary Froggers frog: Diamond Hands" loading="lazy" width="384" height="384"><figcaption>Diamond Hands<span class="ledger-id">No. 02 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/03-le-visiteur.png" alt="Legendary Froggers frog: The Visitor" loading="lazy" width="384" height="384"><figcaption>The Visitor<span class="ledger-id">No. 03 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/04-swamp-rot.png" alt="Legendary Froggers frog: Swamp Rot" loading="lazy" width="384" height="384"><figcaption>Swamp Rot<span class="ledger-id">No. 04 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/05-memento.png" alt="Legendary Froggers frog: Memento" loading="lazy" width="384" height="384"><figcaption>Memento<span class="ledger-id">No. 05 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/06-toad-tv.png" alt="Legendary Froggers frog: Toad TV" loading="lazy" width="384" height="384"><figcaption>Toad TV<span class="ledger-id">No. 06 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/07-tete-beche.png" alt="Legendary Froggers frog: Upside-Down" loading="lazy" width="384" height="384"><figcaption>Upside-Down<span class="ledger-id">No. 07 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/08-moonshot.png" alt="Legendary Froggers frog: Moonshot" loading="lazy" width="384" height="384"><figcaption>Moonshot<span class="ledger-id">No. 08 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/09-marecage-king.png" alt="Legendary Froggers frog: Swamp King" loading="lazy" width="384" height="384"><figcaption>Swamp King<span class="ledger-id">No. 09 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/10-ronin.png" alt="Legendary Froggers frog: Ronin" loading="lazy" width="384" height="384"><figcaption>Ronin<span class="ledger-id">No. 10 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/11-corsaire.png" alt="Legendary Froggers frog: Corsair" loading="lazy" width="384" height="384"><figcaption>Corsair<span class="ledger-id">No. 11 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/12-automate.png" alt="Legendary Froggers frog: Automaton" loading="lazy" width="384" height="384"><figcaption>Automaton<span class="ledger-id">No. 12 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/13-ectoplasme.png" alt="Legendary Froggers frog: Ectoplasm" loading="lazy" width="384" height="384"><figcaption>Ectoplasm<span class="ledger-id">No. 13 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/14-le-malin.png" alt="Legendary Froggers frog: The Trickster" loading="lazy" width="384" height="384"><figcaption>The Trickster<span class="ledger-id">No. 14 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/15-seraphin.png" alt="Legendary Froggers frog: Seraph" loading="lazy" width="384" height="384"><figcaption>Seraph<span class="ledger-id">No. 15 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/16-zero-day.png" alt="Legendary Froggers frog: Zero-Day" loading="lazy" width="384" height="384"><figcaption>Zero-Day<span class="ledger-id">No. 16 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/17-miami-86.png" alt="Legendary Froggers frog: Miami '86" loading="lazy" width="384" height="384"><figcaption>Miami &#39;86<span class="ledger-id">No. 17 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/18-magma.png" alt="Legendary Froggers frog: Magma" loading="lazy" width="384" height="384"><figcaption>Magma<span class="ledger-id">No. 18 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/19-permafrost.png" alt="Legendary Froggers frog: Permafrost" loading="lazy" width="384" height="384"><figcaption>Permafrost<span class="ledger-id">No. 19 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/20-antique.png" alt="Legendary Froggers frog: Antique" loading="lazy" width="384" height="384"><figcaption>Antique<span class="ledger-id">No. 20 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/21-shinobi.png" alt="Legendary Froggers frog: Shinobi" loading="lazy" width="384" height="384"><figcaption>Shinobi<span class="ledger-id">No. 21 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/22-alchimiste.png" alt="Legendary Froggers frog: Alchemist" loading="lazy" width="384" height="384"><figcaption>Alchemist<span class="ledger-id">No. 22 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/23-proof-of-work.png" alt="Legendary Froggers frog: Proof of Work" loading="lazy" width="384" height="384"><figcaption>Proof of Work<span class="ledger-id">No. 23 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/24-le-reacteur.png" alt="Legendary Froggers frog: The Reactor" loading="lazy" width="384" height="384"><figcaption>The Reactor<span class="ledger-id">No. 24 / 25</span></figcaption></figure>
+        <figure class="legendary-card"><img class="pixel" src="assets/legendaries/25-glitch-404.png" alt="Legendary Froggers frog: Glitch 404" loading="lazy" width="384" height="384"><figcaption>Glitch 404<span class="ledger-id">No. 25 / 25</span></figcaption></figure>
+      </div>
+
+      <p class="traits-summary">Burn a legendary and its design returns to the pool — someone else can roll it again.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAIR LAUNCH ============ -->
+  <section id="fair-launch">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">No Team, No Presale</span>
+        <h2 class="section-title">Fair Launch</h2>
+        <p class="section-desc">100% of supply goes into the Uniswap v4 pool at launch. Nothing held back, nothing promised early.</p>
+      </div>
+
+      <div class="launch-grid">
+        <div class="launch-card">
+          <div class="icon">100%</div>
+          <h3>Full Supply in the Pool</h3>
+          <p>Every unit of $FROG starts in the Uniswap v4 pool. No team allocation, no advisor allocation, no marketing wallet.</p>
+        </div>
+        <div class="launch-card">
+          <div class="icon">0</div>
+          <h3>No Presale, No Whitelist</h3>
+          <p>There is no early round. Everyone buys from the same pool, at the same price curve, at the same time.</p>
+        </div>
+        <div class="launch-card">
+          <div class="icon">&uarr;</div>
+          <h3>Anti-Snipe Max-Buy</h3>
+          <p>A max-buy limit starts tight at launch and grows over time, making it harder for bots to snipe the entire early supply in one block.</p>
+        </div>
+        <div class="launch-card">
+          <div class="icon">&empty;</div>
+          <h3>Ownership Renounced</h3>
+          <p>Once the pool and hook are set up, ownership is renounced. No admin key sits over the contracts afterward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Read Before You Ape</span>
+        <h2 class="section-title">FAQ</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>What chain is this on?</summary>
+          <p><span class="chain-name">Robinhood Chain</span>. That's it — the answer isn't more complicated than that.</p>
+        </details>
+        <details>
+          <summary>How do I see my frogs?</summary>
+          <p>Every frog is rendered fully on-chain as SVG. A free <code>eth_call</code> against the contract returns the live image and traits — no server, no metadata API, no IPFS gateway required.</p>
+        </details>
+        <details>
+          <summary>What happens when I sell?</summary>
+          <p>Selling $FROG back into the pool burns the corresponding frogs. Their traits are gone for good. Buy back in later and you mint fresh frogs with a brand-new random roll.</p>
+        </details>
+        <details>
+          <summary>What are the legendary odds?</summary>
+          <p>Every mint has a 0.5% chance of landing one of 25 one-of-a-kind legendary frogs. Only one copy of each legendary can exist at any given time. Burn a legendary and its design goes back into the pool for someone else to roll.</p>
+        </details>
+        <details>
+          <summary>Wen contract address?</summary>
+          <p>At launch. <!-- TODO: replace with the verified contract address once deployed --> <code>TBA</code>.</p>
+        </details>
+        <details>
+          <summary>Is there a team, a roadmap, a presale?</summary>
+          <p>No team section, by design. No presale, no whitelist, no admin key after setup. The contracts are the whole project.</p>
+        </details>
+        <details>
+          <summary>Is the art stored on IPFS or a server?</summary>
+          <p>No. Traits, layering, and rendering all live in the contracts. Nothing is fetched from an external host to display a frog.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <img class="footer-banner pixel" src="assets/branding/banner.png" alt="Froggers banner: a grid of pixel-art frogs around the FROGGERS wordmark, tagline 100% on-chain" loading="lazy" width="1500" height="500">
+
+    <div class="footer-links">
+      <a href="https://x.com/FroggersRH" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+      <!-- TODO: replace with live social links at launch -->
+      <a href="#" title="TODO: Telegram link">Telegram</a>
+      <!-- TODO: replace with live social links at launch -->
+      <a href="#" title="TODO: Discord link">Discord</a>
+    </div>
+
+    <p class="contract-line">Contract: <code><!-- TODO: replace with the verified contract address once deployed -->TBA</code></p>
+
+    <p class="copyright">&copy; <span data-year>2026</span> Froggers &mdash; 100% on-chain. <span class="heart">&#9642;</span> CC0-style, no rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

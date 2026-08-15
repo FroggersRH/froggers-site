@@ -1,0 +1,826 @@
+/*
+  Froggers ($FROG) — stylesheet
+  Palette matched to the official banner (art/branding/banniere-twitter.png):
+  deep green-black field, acid-green pixel wordmark, colorful frog accents.
+  Pixel-art degen aesthetic. Chunky borders, subtle CRT scanlines.
+  No external fonts, no CDN. System font stack only — fully self-hosted.
+*/
+
+:root {
+  /* Base field, matched to the banner background */
+  --bg: #060d06;
+  --bg-tile-a: #0d1a0c;
+  --bg-tile-b: #122609;
+  --bg-alt: #0d1a0c;
+  --bg-card: #0b160e;
+
+  /* Acid green — wordmark gradient + general accent */
+  --acid-top: #c8f04a;
+  --acid-mid: #a8e62e;
+  --acid-bottom: #7acc29;
+  --acid: #a8e62e;
+  --acid-outline: #1c330d;
+  --acid-dim: rgba(168, 230, 46, 0.16);
+  --acid-soft: rgba(168, 230, 46, 0.55);
+
+  /* Robinhood Chain green, used only for chain mentions */
+  --robinhood: #00c805;
+
+  /* Frog accent colors, used sparingly on cards/hover/tags */
+  --gold: #eec12f;
+  --purple: #9955e8;
+  --cyan: #3ec9d6;
+  --orange: #f09a26;
+  --pink: #e85ba0;
+  --cream: #e9e1c9;
+  --navy: #141420;
+
+  --fg: #f2f2e9;
+  --muted: #8fa88a;
+  --border: #1c2e14;
+  --danger: #ff4d5e;
+  --radius: 2px;
+  --mono: ui-monospace, "SFMono-Regular", "Courier New", Courier, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  /* Subtle checkerboard, matched to the banner's tile pattern */
+  background-image: conic-gradient(
+    var(--bg-tile-a) 90deg,
+    var(--bg-tile-b) 90deg 180deg,
+    var(--bg-tile-a) 180deg 270deg,
+    var(--bg-tile-b) 270deg
+  );
+  background-size: 32px 32px;
+  color: var(--fg);
+  font-family: var(--sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* CRT scanline overlay — purely decorative, non-interactive */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(168, 230, 46, 0.035) 0px,
+    rgba(168, 230, 46, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Scattered pixel sparkles, acid green, slow shimmer */
+.sparkle {
+  position: absolute;
+  color: var(--acid-mid);
+  font-family: var(--mono);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  animation: sparkle-shimmer 3.6s ease-in-out infinite;
+  text-shadow: 0 0 6px var(--acid-soft);
+}
+
+.sparkle:nth-child(2n) { animation-delay: 0.6s; }
+.sparkle:nth-child(3n) { animation-delay: 1.3s; }
+.sparkle:nth-child(4n) { animation-delay: 2s; }
+.sparkle:nth-child(5n) { animation-delay: 0.9s; }
+
+@keyframes sparkle-shimmer {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle { animation: none; opacity: 0.7; }
+}
+
+/* Vignette to keep edges dark and focus center */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 998;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+a {
+  color: var(--acid);
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Header / Nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 8, 6, 0.92);
+  border-bottom: 2px solid var(--border);
+  backdrop-filter: blur(2px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--acid);
+  text-decoration: none;
+  text-shadow: 0 0 8px var(--acid-soft);
+}
+
+.brand .dot {
+  width: 10px;
+  height: 10px;
+  background: var(--acid);
+  box-shadow: 0 0 6px var(--acid);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 10px;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-links a:hover {
+  color: var(--acid);
+  border-color: var(--border);
+  background: var(--acid-dim);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  padding: 12px 20px;
+  text-decoration: none;
+  border: 3px solid var(--acid);
+  color: var(--acid);
+  background: transparent;
+  box-shadow: 5px 5px 0 var(--acid-dim);
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--acid-dim);
+}
+
+.btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--acid-dim);
+}
+
+.btn-solid {
+  background: var(--acid);
+  color: #04140a;
+  box-shadow: 5px 5px 0 rgba(238, 193, 47, 0.35);
+}
+
+.btn-solid:hover {
+  box-shadow: 7px 7px 0 rgba(238, 193, 47, 0.35);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 64px 0 40px;
+  text-align: center;
+  border-bottom: 2px solid var(--border);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(57, 255, 20, 0.08), transparent 60%),
+    var(--bg);
+}
+
+.hero .eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 2px solid var(--acid-mid);
+  border-radius: 999px;
+  background: rgba(6, 13, 6, 0.55);
+  padding: 6px 16px;
+}
+
+/* Reusable pill motif — pulled from the banner's tagline tag */
+.pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 2px solid var(--acid-mid);
+  border-radius: 999px;
+  background: rgba(6, 13, 6, 0.55);
+  padding: 6px 16px;
+}
+
+/*
+  Hero wordmark: a rasterized pixel-art PNG (site/assets/branding/wordmark.png),
+  built from the exact same 47x7 letterform grid as the official banner's
+  wordmark, with the acid-green gradient + thick outline baked in as real
+  pixels. Replaces an earlier CSS gradient-text-clip + text-stroke attempt
+  that rendered dark/muddy against the dark background at large sizes —
+  a raster asset guarantees the "pops like the banner" pixel-block look
+  regardless of browser font rendering.
+*/
+.wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 14px 0 6px;
+  line-height: 1;
+}
+
+.wordmark-img {
+  width: min(94vw, 820px);
+  height: auto;
+  filter: drop-shadow(0 0 34px var(--acid-dim));
+}
+
+.wordmark .ticker {
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: clamp(1.1rem, 3.4vw, 1.9rem);
+  color: var(--gold);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.tagline {
+  font-family: var(--mono);
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  color: var(--fg);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.subtagline {
+  max-width: 620px;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hero .btn-row {
+  justify-content: center;
+}
+
+/* Marquee of sample frogs */
+.marquee-wrap {
+  margin-top: 48px;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  background: var(--bg-alt);
+  overflow: hidden;
+  padding: 18px 0;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+
+.marquee-track img {
+  width: 84px;
+  height: 84px;
+  border: 2px solid var(--border);
+  background: #000;
+  flex: 0 0 auto;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ---------- Sections ---------- */
+
+section {
+  padding: 64px 0;
+  border-bottom: 2px solid var(--border);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-title {
+  font-family: var(--mono);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  margin: 8px 0 10px;
+  line-height: 1.15;
+  background: linear-gradient(180deg, var(--acid-top) 0%, var(--acid-mid) 60%, var(--acid-bottom) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: var(--acid-mid);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px var(--acid-outline);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- How it works ---------- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.step-card {
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  padding: 22px;
+  position: relative;
+}
+
+.step-card .step-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--acid);
+  border: 1px solid var(--border);
+  display: inline-block;
+  padding: 2px 8px;
+  margin-bottom: 12px;
+}
+
+.step-card h3 {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+  color: var(--fg);
+}
+
+.step-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.tech-note {
+  margin-top: 30px;
+  border: 2px dashed var(--border);
+  padding: 18px 20px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.tech-note strong {
+  color: var(--acid);
+}
+
+/* ---------- Roll demo ---------- */
+
+.roll-demo {
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  padding: 28px;
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 720px) {
+  .roll-demo {
+    /* Fixed track (not "auto") so the tile's percentage width below
+       resolves against a definite size instead of collapsing. */
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+/*
+  Single composited preview tile: 6 trait layers stacked with
+  position:absolute in on-chain paint order (background at the bottom,
+  headwear on top). Each layer is stretched to 100% of the tile, matching
+  how the contracts composite 32x32 layers onto one canvas. Requires the
+  non-background layers to carry real alpha (see strip_checker_alpha.py) —
+  the background layer alone stays fully opaque, as the bottom-most layer.
+*/
+.roll-tile {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border: 2px solid var(--border);
+  background: var(--bg-tile-a);
+  overflow: hidden;
+}
+
+.roll-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.roll-copy h3 {
+  font-family: var(--mono);
+  margin-top: 0;
+  color: var(--fg);
+}
+
+.roll-copy p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.roll-copy .fine-print {
+  font-size: 0.72rem;
+  color: var(--muted);
+  opacity: 0.8;
+  font-family: var(--mono);
+}
+
+/* ---------- Legendary grid ---------- */
+
+.legendary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 14px;
+}
+
+.legendary-card {
+  margin: 0;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  padding: 8px;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.legendary-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.legendary-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #000;
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.legendary-card figcaption {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.legendary-card .ledger-id {
+  display: block;
+  color: var(--muted);
+  font-size: 0.6rem;
+  margin-top: 2px;
+}
+
+.odds-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin: 0 0 36px;
+  font-family: var(--mono);
+}
+
+.odds-item {
+  text-align: center;
+}
+
+.odds-item .num {
+  font-size: 1.7rem;
+  color: var(--acid);
+  display: block;
+  text-shadow: 0 0 12px var(--acid-dim);
+}
+
+.odds-item .label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.traits-summary {
+  text-align: center;
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 28px;
+}
+
+/* ---------- Fair launch ---------- */
+
+.launch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.launch-card {
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  padding: 20px;
+}
+
+.launch-card .icon {
+  font-family: var(--mono);
+  color: var(--acid);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.launch-card h3 {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+  color: var(--fg);
+}
+
+.launch-card p {
+  color: var(--muted);
+  font-size: 0.87rem;
+  margin: 0;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.faq details {
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  margin-bottom: 10px;
+  padding: 4px 18px;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-weight: 700;
+  padding: 14px 0;
+  color: var(--fg);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  color: var(--acid);
+  font-size: 1.2rem;
+  flex: 0 0 auto;
+}
+
+.faq details[open] summary::after {
+  content: "\2212";
+}
+
+.faq p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 40px 0 60px;
+  text-align: center;
+}
+
+.footer-banner {
+  width: 100%;
+  height: auto;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  border: 2px solid var(--border);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links a:hover {
+  color: var(--acid);
+  border-color: var(--acid);
+}
+
+.contract-line {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.contract-line code {
+  color: var(--gold);
+  background: rgba(238, 193, 47, 0.08);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+}
+
+.copyright {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.copyright .heart {
+  color: var(--acid);
+}
+
+/* ---------- Misc ---------- */
+
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  background: rgba(6, 13, 6, 0.55);
+  border: 1.5px solid var(--acid-mid);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Robinhood Chain green, used only for chain-name mentions */
+.chain-name {
+  color: var(--robinhood);
+  font-weight: 700;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--acid);
+  color: #04140a;
+  padding: 10px 16px;
+  z-index: 1000;
+  font-family: var(--mono);
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 46px 0;
+  }
+  .nav-links {
+    justify-content: center;
+    width: 100%;
+  }
+}
